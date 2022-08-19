@@ -76,61 +76,80 @@
       number: 1,
       question: '日本のIT人材が2030年には最大どれくらい不足すると言われているでしょうか？',
       picture: '../assets/img/quiz/img-quiz01.png',
-      item1: '約28万人',
-      item2: '約79万人',
-      item3: '約183万人',
+      item: ['約28万人', '約79万人', '約183万人'],
+      // item1: '約28万人',
+      // item2: '約79万人',
+      // item3: '約183万人',
       quote: '経済産業省 2019年3月 － IT 人材需給に関する調査',
     },
     {
       number: 2,
       question: '既存業界のビジネスと、先進的なテクノロジーを結びつけて生まれた、新しいビジネスのことをなんと言うでしょう？',
       picture: '../assets/img/quiz/img-quiz02.png',
-      item1: 'INTECH',
-      item2: 'BIZZTECH',
-      item3: 'X-TECH',
+      item: ['INTECH', 'BIZZTECH', 'X-TECH'],
+      // item1: 'INTECH',
+      // item2: 'BIZZTECH',
+      // item3: 'X-TECH',
       quote: '',
     },
     {
       number: 3,
       question: 'IoTとは何の略でしょう？',
       picture: '../assets/img/quiz/img-quiz03.png',
-      item1: 'Internet of Things',
-      item2: 'Integrate into Technology',
-      item3: 'Information on Tool',
+      item: ['Internet of Things', 'Integrate into Technology', 'Information on Tool'],
+      // item1: 'Internet of Things',
+      // item2: 'Integrate into Technology',
+      // item3: 'Information on Tool',
       quote: '',
     },
     {
       number: 4,
       question: 'イギリスのコンピューター科学者であるギャビン・ウッド氏が提唱した、ブロックチェーン技術を活用した「次世代分散型インターネット」のことをなんと言うでしょう？',
       picture: '../assets/img/quiz/img-quiz04.png',
-      item1: 'Society 5.0',
-      item2: 'CyPhy',
-      item3: 'SDGs',
+      item: ['Society 5.0', 'CyPhy', 'SDGs'],
+      // item1: 'Society 5.0',
+      // item2: 'CyPhy',
+      // item3: 'SDGs',
       quote: 'Society5.0 - 科学技術政策 - 内閣府',
     },
     {
       number: 5,
       question: 'イギリスのコンピューター科学者であるギャビン・ウッド氏が提唱した、ブロックチェーン技術を活用した「次世代分散型インターネット」のことをなんと言うでしょう？',
       picture: '../assets/img/quiz/img-quiz05.png',
-      item1: 'Web3.0',
-      item2: 'NFT',
-      item3: 'メタバース',
+      item: ['Web3.0', 'NFT', 'メタバース'],
+      // item1: 'Web3.0',
+      // item2: 'NFT',
+      // item3: 'メタバース',
       quote: '',
     },
     {
       number: 6,
       question: '先進テクノロジー活用企業と出遅れた企業の収益性の差はどれくらいあると言われているでしょうか？',
       picture: '../assets/img/quiz/img-quiz06.png',
-      item1: '約2倍',
-      item2: '約5倍',
-      item3: '約11倍',
+      item: ['約2倍', '約5倍', '約11倍'],
+      // item1: '約2倍',
+      // item2: '約5倍',
+      // item3: '約11倍',
       quote: 'Accenture Technology Vision 2021',
     },
   ];
 
   const quiz = document.getElementById('quiz_template');
+  let quiz_questioned = [];
 
   for (let i = 0; i < QUIZ_VALUE.length; i++) {
+    let real_i = i;
+    for (let j = 0; j >= 0; j++) {
+      let r = Math.floor(Math.random() * QUIZ_VALUE.length);
+      if (quiz_questioned.includes(r) === false) {
+        i = r;
+        quiz_questioned.push(i);
+        break;
+      } else {
+        continue;
+      }
+    }
+    
     const quiz_content = quiz.content.cloneNode(true);
 
     // // const data_quiz = document.getElementById('quiz');
@@ -140,14 +159,34 @@
     quiz_content.querySelector('.quiz_question_title_box').textContent = "Q" + QUIZ_VALUE[i].number;
     quiz_content.querySelector('.quiz_question_title_text').textContent = QUIZ_VALUE[i].question;
     quiz_content.querySelector('.quiz_question_pct').innerHTML = ("<img src='" + QUIZ_VALUE[i].picture + "' width=718>");
-    quiz_content.querySelector('.quiz_answer_list_item_btn_1').innerHTML = (QUIZ_VALUE[i].item1 + "<i class=\"u-icon_arrow\"></i>");
-    quiz_content.querySelector('.quiz_answer_list_item_btn_2').innerHTML = (QUIZ_VALUE[i].item2 + "<i class=\"u-icon_arrow\"></i>");
-    quiz_content.querySelector('.quiz_answer_list_item_btn_3').innerHTML = (QUIZ_VALUE[i].item3 + "<i class=\"u-icon_arrow\"></i>");
+
+    let btn_list = [];
+    for (let k = 1; k <= 3; k++) {
+      for (let j = 0; j >= 0; j++) {
+        let r = Math.floor(Math.random() * 3);
+        if (btn_list.includes(r) === false) {
+          quiz_content.querySelector('.quiz_answer_list_item_btn_' + k).innerHTML = (QUIZ_VALUE[i].item[r] + "<i class=\"u-icon_arrow\"></i>");
+          btn_list.push(r);
+          const answer_content = quiz_content.querySelector(`.quiz_answer_list_item_btn_${k}`);
+          answer_content.setAttribute("data-answer", r);
+          break;
+        } else {
+          continue;
+        }
+      }
+    }
+
+    // quiz_content.querySelector('.quiz_answer_list_item_btn_1').innerHTML = (QUIZ_VALUE[i].item1 + "<i class=\"u-icon_arrow\"></i>");
+    // quiz_content.querySelector('.quiz_answer_list_item_btn_2').innerHTML = (QUIZ_VALUE[i].item2 + "<i class=\"u-icon_arrow\"></i>");
+    // quiz_content.querySelector('.quiz_answer_list_item_btn_3').innerHTML = (QUIZ_VALUE[i].item3 + "<i class=\"u-icon_arrow\"></i>");
+
     if (QUIZ_VALUE[i].quote !== '') {
       quiz_content.querySelector('.quiz_quote').innerHTML = '<i class="u-icon_note"></i>' + QUIZ_VALUE[i].quote;
     } else {
       quiz_content.querySelector('.quiz_quote').classList.add('quiz_quote_hidden');
     }
+
+    i = real_i;
 
     document.getElementById('quiz_temp').appendChild(quiz_content);
   }
