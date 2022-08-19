@@ -584,13 +584,13 @@ i, .icomoon-liga {
   line-height: 150%;
   color: #FFFFFF;
 }
-.quiz_main_quiz {
+.main_quiz {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
   padding: 0px 24px;
-  margin: 120px 196px 0px;
+  margin: 0px 196px;
   gap: 120px;
   /* position: absolute; */
   width: 100%;
@@ -702,6 +702,10 @@ i, .icomoon-liga {
   line-height: 1.5;
   margin: 0px;
 }
+
+/* CSSの入れ子の記述方法とルールを徹底解説 */
+/* https://web-camp.io/magazine/archives/100478 */
+/* .js-answerBoxにクラス名is-correct || is-incorrectを付けている */
 .is-correct .quiz_answer_correct_title {
   color: #e34e70;
 }
@@ -735,6 +739,9 @@ i, .icomoon-liga {
   margin: 16px 0 0 0;
   padding: 24px;
 }
+.quiz_quote_hidden {
+  display: none;
+}
 .u-icon_arrow {
   font-size: 16px;
   margin-left: auto;
@@ -746,12 +753,12 @@ i, .icomoon-liga {
   content: "\e902";
 }
 
-.quiz_score {
-  background-color: red;
+/* .quiz_score {
+  background-color: red; */
   /* display: flex; */
   /* flex-direction: column;
   justify-content: center; */
-  width: 100%;
+  /* width: 100%;
   display: none;
 }
 .quiz_score_inner {
@@ -762,4 +769,4 @@ i, .icomoon-liga {
 }
 .quiz_score_inner_text {
   color: blue;
-}
+} */

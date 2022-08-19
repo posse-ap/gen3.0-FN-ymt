@@ -1,6 +1,157 @@
 'use strict';
 
 {
+  // 選択肢シャッフル
+  // function shuffleContent(container) {
+  //   let content = container.find(".quiz_answer_list_item");
+  //   content.each(function() {
+  //     content.eq(Math.floor(Math.random() * 3)).prependTo(container);
+  //   });
+  // }
+  // // function(container) {
+  // shuffleContent('.quiz_answer_list');
+  // // };
+
+  // $(function() {
+  //   var box = [];
+  //   $('ul.quiz_answer_list li').each(function() {
+  //       box.push($(this).html());
+  //   });
+  //   box.sort(function() {
+  //       return Math.random() - Math.random();
+  //   });
+  //   $('ul.quiz_answer_list li').empty();
+    
+  //   var i = 0;
+  //   $('ul.quiz_answer_list li').each(function() {
+  //       $(this).append(box[i]);
+  //       i++;
+  //   });
+  // });
+
+  // https://qiita.com/daybreak_dawn/items/de47cdd6d9b8e1315c9a
+  // $(function(){
+  // // window.addEventListener('DOMContentLoaded', function() {
+  //   let randomContent = [];
+  //   $('.quiz_answer_list li').each(function() {
+  //     randomContent.push($(this).html());
+  //   });
+  
+  //   randomContent.sort(function() {
+  //     return Math.random() - Math.random();
+  //   });
+  
+  //   $('.quiz_answer_list li').empty();
+  //   let i = 0;
+  //   $('.quiz_answer_list li').each(function() {
+  //     $(this).append(randomContent[i]);
+  //     i++;
+  //   });
+  // });
+
+  // const lists = document.querySelectorAll('.quiz_answer_list');
+  // lists.forEach(list => {
+  //   $(function(){
+  //     let randomContent = [];
+  //     $('.quiz_answer_list li').each(function() {
+  //       randomContent.push($(this).html());
+  //     });
+    
+  //     randomContent.sort(function() {
+  //       return Math.random() - Math.random();
+  //     });
+    
+  //     $('.quiz_answer_list li').empty();
+  //     let i = 0;
+  //     $('.quiz_answer_list li').each(function() {
+  //       $(this).append(randomContent[i]);
+  //       i++;
+  //     });
+  //   });
+  // });
+
+  // クイズ要素 jsだけでクイズを追加可能にする
+  const QUIZ_VALUE = [
+    {
+      number: 1,
+      question: '日本のIT人材が2030年には最大どれくらい不足すると言われているでしょうか？',
+      picture: '../assets/img/quiz/img-quiz01.png',
+      item1: '約28万人',
+      item2: '約79万人',
+      item3: '約183万人',
+      quote: '経済産業省 2019年3月 － IT 人材需給に関する調査',
+    },
+    {
+      number: 2,
+      question: '既存業界のビジネスと、先進的なテクノロジーを結びつけて生まれた、新しいビジネスのことをなんと言うでしょう？',
+      picture: '../assets/img/quiz/img-quiz02.png',
+      item1: 'INTECH',
+      item2: 'BIZZTECH',
+      item3: 'X-TECH',
+      quote: '',
+    },
+    {
+      number: 3,
+      question: 'IoTとは何の略でしょう？',
+      picture: '../assets/img/quiz/img-quiz03.png',
+      item1: 'Internet of Things',
+      item2: 'Integrate into Technology',
+      item3: 'Information on Tool',
+      quote: '',
+    },
+    {
+      number: 4,
+      question: 'イギリスのコンピューター科学者であるギャビン・ウッド氏が提唱した、ブロックチェーン技術を活用した「次世代分散型インターネット」のことをなんと言うでしょう？',
+      picture: '../assets/img/quiz/img-quiz04.png',
+      item1: 'Society 5.0',
+      item2: 'CyPhy',
+      item3: 'SDGs',
+      quote: 'Society5.0 - 科学技術政策 - 内閣府',
+    },
+    {
+      number: 5,
+      question: 'イギリスのコンピューター科学者であるギャビン・ウッド氏が提唱した、ブロックチェーン技術を活用した「次世代分散型インターネット」のことをなんと言うでしょう？',
+      picture: '../assets/img/quiz/img-quiz05.png',
+      item1: 'Web3.0',
+      item2: 'NFT',
+      item3: 'メタバース',
+      quote: '',
+    },
+    {
+      number: 6,
+      question: '先進テクノロジー活用企業と出遅れた企業の収益性の差はどれくらいあると言われているでしょうか？',
+      picture: '../assets/img/quiz/img-quiz06.png',
+      item1: '約2倍',
+      item2: '約5倍',
+      item3: '約11倍',
+      quote: 'Accenture Technology Vision 2021',
+    },
+  ];
+
+  const quiz = document.getElementById('quiz_template');
+
+  for (let i = 0; i < QUIZ_VALUE.length; i++) {
+    const quiz_content = quiz.content.cloneNode(true);
+
+    // // const data_quiz = document.getElementById('quiz');
+    const data_quiz = quiz_content.querySelector('.js-quiz');
+    data_quiz.setAttribute("data-quiz", i);
+
+    quiz_content.querySelector('.quiz_question_title_box').textContent = "Q" + QUIZ_VALUE[i].number;
+    quiz_content.querySelector('.quiz_question_title_text').textContent = QUIZ_VALUE[i].question;
+    quiz_content.querySelector('.quiz_question_pct').innerHTML = ("<img src='" + QUIZ_VALUE[i].picture + "' width=718>");
+    quiz_content.querySelector('.quiz_answer_list_item_btn_1').innerHTML = (QUIZ_VALUE[i].item1 + "<i class=\"u-icon_arrow\"></i>");
+    quiz_content.querySelector('.quiz_answer_list_item_btn_2').innerHTML = (QUIZ_VALUE[i].item2 + "<i class=\"u-icon_arrow\"></i>");
+    quiz_content.querySelector('.quiz_answer_list_item_btn_3').innerHTML = (QUIZ_VALUE[i].item3 + "<i class=\"u-icon_arrow\"></i>");
+    if (QUIZ_VALUE[i].quote !== '') {
+      quiz_content.querySelector('.quiz_quote').innerHTML = '<i class="u-icon_note"></i>' + QUIZ_VALUE[i].quote;
+    } else {
+      quiz_content.querySelector('.quiz_quote').classList.add('quiz_quote_hidden');
+    }
+
+    document.getElementById('quiz_temp').appendChild(quiz_content);
+  }
+  
   // 回答一覧
   const CORRECT_ANSWERS = [
     {
@@ -30,7 +181,7 @@
   ];
 
   // すべての問題を取得
-  const allQuiz  = document.querySelectorAll('.js-quiz');
+  const allQuiz = document.querySelectorAll('.js-quiz');
 
   // buttonタグにdisabledを付与  // L65
   const setDisabled = answers => {

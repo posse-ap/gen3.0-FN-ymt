@@ -15,10 +15,11 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
     rel="stylesheet">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  追記 -->
   <script src="../assets/scripts/script.js" defer></script>
 </head>
 
-<body>
+<body class="quiz_body">
   <header class="header">
     <div class="header_logo">
       <img src="../assets/img/logo.svg" alt="POSSEロゴ">
@@ -61,7 +62,54 @@
         </div>
       </div>
     </section>
-    <div class="quiz_main_quiz">
+    
+    <section id="quiz_temp" class="main_quiz quiz_temp">
+      <template id="quiz_template" class="main_quiz">
+        <div id="quiz" class="quiz js-quiz">
+          <div class="quiz_question">
+            <h2 class="quiz_question_title">
+              <span class="quiz_question_title_box"></span>
+              <span class="quiz_question_title_text"></span>
+            </h2>
+            <picture class="quiz_question_pct">
+              <!-- <img src="" alt="" width="718"> -->
+            </picture>
+          </div>
+          <div class="quiz_answer">
+            <span class="quiz_answer_box">A</span>
+            <ul class="quiz_answer_list">
+              <li class="quiz_answer_list_item">
+                <button class="quiz_answer_list_item_btn quiz_answer_list_item_btn_1 js-answer" data-answer="0"> <!-- is-selected -->
+                  <!-- <i class="u-icon_arrow"></i> -->
+                </button>
+              </li>
+              <li class="quiz_answer_list_item">
+                <button class="quiz_answer_list_item_btn quiz_answer_list_item_btn_2 js-answer" data-answer="1"> 
+                  <i class="u-icon_arrow"></i>
+                </button>
+              </li>
+              <li class="quiz_answer_list_item">
+                <button class="quiz_answer_list_item_btn quiz_answer_list_item_btn_3 js-answer" data-answer="2">
+                  <i class="u-icon_arrow"></i>
+                </button>
+              </li>
+            </ul>
+            <div class="quiz_answer_correct js-answerBox"> <!-- is-correct || is-incorrect-->
+              <p class="quiz_answer_correct_title js-answerTitle"></p>
+              <p class="quiz_answer_correct_content">
+                <span class="quiz_answer_correct_content_label">A</span>
+                <span class="js-answerText"></span>
+              </p>
+            </div>
+          </div>
+          <blockquote class="quiz_quote">
+            <!-- <i class="u-icon_note"></i> -->
+          </blockquote>
+        </div>
+      </template>
+    </section>
+
+    <!-- <div class="quiz_main_quiz">
       <section class="quiz_1 js-quiz" data-quiz="0">
         <div class="quiz_question">
           <h2 class="quiz_question_title">
@@ -76,12 +124,12 @@
           <span class="quiz_answer_box">A</span>
           <ul class="quiz_answer_list">
             <li class="quiz_answer_list_item">
-              <button class="quiz_answer_list_item_btn js-answer" data-answer="0">
+              <button class="quiz_answer_list_item_btn js-answer" data-answer="0"> is-selected
                 約28万人<i class="u-icon_arrow"></i>
               </button>
             </li>
             <li class="quiz_answer_list_item">
-              <button class="quiz_answer_list_item_btn js-answer" data-answer="1">
+              <button class="quiz_answer_list_item_btn js-answer" data-answer="1"> 
                 約79万人<i class="u-icon_arrow"></i>
               </button>
             </li>
@@ -91,7 +139,7 @@
               </button>
             </li>
           </ul>
-          <div class="quiz_answer_correct js-answerBox">
+          <div class="quiz_answer_correct js-answerBox"> is-correct || is-incorrect
             <p class="quiz_answer_correct_title js-answerTitle"></p>
             <p class="quiz_answer_correct_content">
               <span class="quiz_answer_correct_content_label">A</span>
@@ -306,11 +354,11 @@
             <p>クイズ結果</p>
           </div>
           <div class="quiz_score_inner_text">
-            
+
           </div>
         </div>
       </section>
-    </div>
+    </div> -->
 
     <section class="main_line">
       <div class="main_line_container">
