@@ -3,6 +3,12 @@
 タブレット（960px）
 スマートフォン（520px） */
 
+/* orientation
+portrait ... ビューポートは縦長です。つまり、高さが幅よりも大きいか等しい状態です。
+landscape ... ビューポートは横長です。つまり、幅が高さよりも大きい状態です。*/
+
+/* かつ ... and / または ... , / 否定 ... not */
+
 /* example */
 /* @media screen and (min-width:520px) {
   ul {
@@ -125,6 +131,114 @@ i, .icomoon-liga {
   text-decoration: none;
 }
 
+/* ハンバーガーメニュー */
+.sp_menu {
+  display: none;
+}
+#open {
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+}
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sp_menu {
+    position: absolute;
+    display: block;
+    top: 8px;
+    right: 19px;
+    cursor: pointer;
+  }
+  .sp_menu #open.hide {
+    display: none;
+  }
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 1);
+    text-align: center;
+    /* padding: 64px; */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s;
+  }
+  .overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .overlay #close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 32px;
+    cursor: pointer;
+  }
+  .overlay_header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 56px;
+    width: 100%;
+  }
+  .overlay .header_logo img {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+  }
+  .overlay_link {
+    position: absolute;
+    /* width: 138px; */
+    height: 106px;
+    left: calc(50% - 138px/2);
+    top: 136px;
+  }
+  .overlay_link_list {
+    list-style-type: none;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .overlay_link_list li a {
+    text-decoration: none;
+    color: black;
+  }
+  .overlay_line {
+    position: absolute;
+    width: 95vw;
+    height: 60px;
+    left: calc(50% - 95vw/2);
+    bottom: 159px;
+  }
+  .overlay_line .footer_line_link {
+    border-radius: 30px;
+  }
+  .overlay_site_sns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    width: 139px;
+    height: 25px;
+    left: calc(50% - 139px/2);
+    bottom: 110px;
+  }
+  .overlay_site_sns .footer_site {
+    margin-top: 24px;
+  }
+  .footer_line.hide {
+    display: none;
+  }
+}
+
 .main {
   padding-top: 80px;
 }
@@ -215,75 +329,6 @@ i, .icomoon-liga {
   height: 8px;
   width: 8px;
 }
-/* .main_about {
-  margin: 0 auto;
-  padding: 0px 24px;
-  width: 100%;
-  max-width: 1032px;
-  position: absolute;
-  width: 984px;
-  height: 442px;
-  left: calc(50% - 984px/2);
-  top: 856px;
-}
-.main_about_title {
-  display: block;
-  width: 984px;
-}
-.main_about_title_text {
-  margin: 0;
-  position: absolute;
-  width: 191px;   /////////////////
-  height: 54px;
-  left: calc(50% - 191px/2);
-  top: 0px;
-  font-family: 'Noto Sans JP';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 150%;
-  text-align: center;
-  color: #333333;
-}
-.main_about_title_text_under {
-  color: #0071bc;
-  display: block;
-  font-family: "Plus Jakarta Sans", "Noto Sans JP", sans-serif;
-  font-size: 14px;
-  letter-spacing: initial;
-  line-height: 1.8;
-  margin-top: 8px;
-}
-.main_about_content {
-  position: absolute;
-  top: 86px;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  margin-top: 42px;
-  padding: 0 24px;
-}
-.main_about_content_img_img {
-  width: 472px;
-  height: 312px;
-  border-radius: 24px;
-}
-.main_about_content_text {
-  width: 472px;
-  height: 175px;
-  font-family: 'Noto Sans JP';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 180%;
-  text-align: justify;
-  color: #333333;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-} */
 .main_about {
   margin-top: 96px;
 }
@@ -753,20 +798,258 @@ i, .icomoon-liga {
   content: "\e902";
 }
 
-/* .quiz_score {
-  background-color: red; */
-  /* display: flex; */
-  /* flex-direction: column;
-  justify-content: center; */
-  /* width: 100%;
-  display: none;
-}
-.quiz_score_inner {
-  display: block;
-}
-.quiz_score_inner_title {
-  font-size: large;
-}
-.quiz_score_inner_text {
-  color: blue;
+/* @media screen and (min-width: 768px) {
+  .main_line {
+
+  }
 } */
+
+@media screen and (max-width: 768px) {
+  /* .header {
+    /* display: block; */
+    /* padding: 16px;
+    width: auto;
+  } */
+  .header {
+    /* height: 56px; */
+    /* width: 100%; */
+    padding: 15px 24px;
+  }
+  .header_logo img {
+    height: 22px;
+  }
+  .header_nav,
+  .header_sns {
+    display: none;
+  }
+  .main {
+    padding-top: 56px;
+    width: 100%;
+  }
+  .main_hero {
+    display: block;
+    flex-direction: column-reverse;
+    max-width: 768px;
+    width: auto;
+    max-height: 360px;
+    /* margin: 0 auto; */
+  }
+  .main_hero_letter {
+    position: absolute;
+    left: calc(50% - 343px/2);
+    max-width: 343px;
+    height: 110px;
+    top: 251px;
+  }
+  .main_hero_letter_inner {
+    height: 70px;
+    padding: 20px 11px 20px 24px;
+    position: relative;
+  }
+  .main_hero_letter_title {
+    font-weight: 700;
+    font-size: 12px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+  }
+  .main_hero_letter_text {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    font-size: 28px;
+    text-align: right;
+    height: 42px;
+    padding: 0;
+  }
+  .main_hero_letter_text br {
+    display: none;
+  }
+  .main_hero_img {
+    display: block;
+    max-height: 275px;
+    overflow: hidden;
+  }
+  .main_hero_img img {
+    -o-object-fit: cover;
+    display: block;
+    height: 100%;
+       object-fit: cover;
+    width: 100%;
+    border-radius: 0;
+    height: 275px;
+    overflow: hidden;
+  }
+  .main_hero_scroll {
+    display: none;
+  }
+
+  .main_about_container {
+    /* max-width: 768px; */
+    width: auto;
+  }
+  .main_about_container_text_title {
+    font-size: 24px;
+  }
+  .main_about_container_content {
+    display: block;
+  }
+  .main_about_container_content_pct_img {
+    border-radius: 16px;
+    margin-top: -22px;
+  }
+  .main_about_container_content_text {
+    width: 100%;
+  }
+
+  .main_line {
+    margin-top: 64px;
+    width: 93vw;
+  }
+  .main_line_container {
+    padding: 0px 16px;
+  }
+  .main_line_inner_title {
+    font-size: 24px;
+    flex-direction: column;
+    gap: 4px;
+    line-height: 1.8;
+    /* height: 80px; */
+    /* position: relative; */
+  }
+  .u-icon_line_main_line {
+    position: absolute;
+    top: -40px;
+    left: calc(50% - 40px/2);
+  }
+  .main_line_inner_text {
+    text-align: left;
+  }
+
+  .footer_line {
+    width: 100%;
+    height: 48px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    position: fixed;
+  }
+  .footer_line_link {
+    border-radius: 0;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 49px;
+  }
+  .u-icon_line_footer_line {
+    font-size: 28px;
+  }
+  .u-icon_line:before {
+    width: 28px;
+    height: 28px;
+  }
+  .footer_line_link_text br {
+    display: none;
+  }
+  .footer_line_link_text_hidden {
+    display: none;
+  }
+  .quiz_temp {
+    margin: 0;
+    padding: 0 16px;
+    width: 100%;
+  }
+  /* .main_quiz {
+    margin: 0;
+  } */
+  .quiz_main_hero {
+    max-height: 159px;
+    width: 100%;
+  }
+  .quiz_main_hero_pct img {
+    width: 100%;
+    height: 100%;
+  }
+  .quiz_main_hero_container {
+    position: absolute;
+    top: -43px;
+    left: 0;
+    width: 80%;
+  }
+  .quiz_main_hero_container_string {
+    position: absolute;
+    /* left: 32px;
+    top: 60px; */
+    left: 10%;
+    top: -43px;
+    width: 80%;
+  }
+  .quiz_main_hero_container_string_title {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 76px;
+    height: 25px;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 180%;
+  }
+  .quiz_main_hero_container_string_text {
+    /* position: absolute; */
+    width: 120px;
+    height: 42px;
+    /* left: 0px;
+    top: 25px; */
+    font-family: 'Noto Sans CJK JP';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 150%;
+  }
+  .quiz_temp {
+    width: 93%;
+  }
+  .quiz_question_title_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 8px;
+    width: 68px;
+    height: 52px;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .quiz_question_title_text {
+    height: 64px;
+    left: calc(50% - 343px/2);
+    top: 68px;
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 180%;
+    text-align: justify;
+  }
+  .quiz_question_pct img {
+    width: 100%;
+  }
+  .quiz_answer {
+    width: 100%;
+  }
+  .quiz_answer_list {
+    display: flex;
+    flex-direction: column;
+  }
+  .quiz_answer_list_item_btn {
+    font-size: 14px;
+    height: 54px;
+  }
+  .quiz_quote {
+    font-size: 14px;
+    padding: 24px;
+  }
+}

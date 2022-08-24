@@ -15,6 +15,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -25,10 +26,10 @@
     <nav class="header_nav">
       <ul class="header_nav_list">
         <li class="header_nav_list_item">
-          <a href="./" class="header_nav_list_item_link">トップページ</a>
+          <a href="./index.html" class="header_nav_list_item_link">トップページ</a>
         </li>
         <li class="header_nav_list_item">
-          <a href="" class="header_nav_list_item_link">クイズ</a>
+          <a href="./quiz/index.html" class="header_nav_list_item_link">クイズ</a>
         </li>
       </ul>
     </nav>
@@ -46,6 +47,49 @@
         </a>
       </li>
     </ul>
+    <div class="sp_menu">
+      <span class="material-icons" id="open">drag_handle</span>
+    </div>
+    <div class="overlay">
+      <div class="ovrelay_header header_logo">
+        <img src="./assets/img/logo.svg" alt="POSSEロゴ">
+        <span class="material-icons" id="close">close</span>
+      </div>
+      <div class="overlay_link">
+        <ul class="overlay_link_list">
+          <li><a href="./index.html" target="_blank">POSSEとは</a></li>
+          <li><a href="./quiz/index.html" target="_blank">クイズ</a></li>
+        </ul>
+      </div>
+      <div class="overlay_line">
+        <a href="https://line.me/R/ti/p/@651htnqp?from=page" target="_blank" rel="noopener noreferrer" class="footer_line_link">
+          <i class="u-icon_line u-icon_line_footer_line"></i>
+          <p class="footer_line_link_text">POSSE公式LINE追加</p>
+          <i class="u-icon_link"></i>
+        </a>
+      </div>
+      <div class="overlay_site_sns">
+        <div class="footer_site">
+          <a href="https://posse-ap.com/" target="_blank" rel="noopener noreferrer" class="footer_site_link">POSSE公式サイト<i class="u-icon_link"></i></a>
+        </div>
+        <div class="footer_sns">
+          <ul class="footer_sns_list">
+            <li class="footer_sns_item">
+              <a href="https://twitter.com/posse_program" target="_blank" rel="noopener noreferrer" class="footer_sns_item_link"
+                aria-label="Twitter">
+                <i class="u-icon_twitter"></i>
+              </a>
+            </li>
+            <li class="footer_sns_item">
+              <a href="https://twitter.com/posse_program" target="_blank" rel="noopener noreferrer" class="footer_sns_item_link"
+                aria-label="instagram">
+                <i class="u-icon_instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main class="main">
@@ -59,29 +103,10 @@
       <div class="main_hero_img">
         <img src="./assets/img/img-hero.jpg" alt="3人の集合写真" class="main_hero_img_img">
       </div>
-      <picture class="main_hero_scroll">
+      <div class="main_hero_scroll">
         Scroll Down
-      </picture>
+      </div>
     </section>
-
-    <!-- <section class="main_about">
-      <div class="main_about_title">
-        <h1 class="main_about_title_text">
-          POSSEとは
-          <span class="main_about_title_text_under">About POSSE</span>
-        </h1>
-      </div>
-      <div class="main_about_content">
-        <picture class="main_about_content_img">
-          <img src="./assets/img/img-about.jpg" alt="集合写真" class="main_about_content_img_img">
-        </picture>
-        <div class="main_about_content_text">
-          <p>学生プログラミングコミュニティ「POSSE(ポッセ)」は、人格とプログラミング、二つの面での成長をスローガンに活動しており、大学生だけが集まって学びを深めるコミュニティです。<br>
-          プログラミングだけではありません。オフラインでのイベントや、旅行など様々な企画を行っています！<br>
-          それらを通じて、夏休みの大半をPOSSEで出来た仲間と過ごす人もたくさんいるほどメンバーとの仲が深まります。</p>
-        </div>
-      </div>
-    </section> -->
 
     <section class="main_about">
       <div class="main_about_container">
@@ -124,8 +149,8 @@
   <footer class="footer">
     <div class="footer_line">
       <a href="https://line.me/R/ti/p/@651htnqp?from=page" target="_blank" rel="noopener noreferrer" class="footer_line_link">
-        <i class="u-icon_line"></i>
-        <p class="footer_line_link_text">POSSE公式LINEで<br>最新情報をGET！</p>
+        <i class="u-icon_line u-icon_line_footer_line"></i>
+        <p class="footer_line_link_text"><span class="footer_line_link_text_hidden">POSSE</span>公式LINEで<br>最新情報をGET！</p>
         <i class="u-icon_link"></i>
       </a>
     </div>
@@ -134,7 +159,7 @@
         <img src="./assets/img/logo.svg" alt="POSSEロゴ">
       </div>
       <div class="footer_site">
-        <a href="https://posse-ap.com/" target="_blank" rel="noopener noreferrer" class="footer_site_link">POSSE公式サイト</a>
+        <a href="https://posse-ap.com/" target="_blank" rel="noopener noreferrer" class="footer_site_link">POSSE公式サイト<i class="u-icon_link"></i></a>
       </div>
       <div class="footer_sns">
         <ul class="footer_sns_list">
@@ -157,6 +182,7 @@
       <small lang="en">©︎2022 POSSE</small>
     </div>
   </footer>
+  <script src="./assets/scripts/common.js"></script>
 </body>
 
 </html>

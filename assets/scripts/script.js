@@ -1,75 +1,6 @@
 'use strict';
 
 {
-  // 選択肢シャッフル
-  // function shuffleContent(container) {
-  //   let content = container.find(".quiz_answer_list_item");
-  //   content.each(function() {
-  //     content.eq(Math.floor(Math.random() * 3)).prependTo(container);
-  //   });
-  // }
-  // // function(container) {
-  // shuffleContent('.quiz_answer_list');
-  // // };
-
-  // $(function() {
-  //   var box = [];
-  //   $('ul.quiz_answer_list li').each(function() {
-  //       box.push($(this).html());
-  //   });
-  //   box.sort(function() {
-  //       return Math.random() - Math.random();
-  //   });
-  //   $('ul.quiz_answer_list li').empty();
-    
-  //   var i = 0;
-  //   $('ul.quiz_answer_list li').each(function() {
-  //       $(this).append(box[i]);
-  //       i++;
-  //   });
-  // });
-
-  // https://qiita.com/daybreak_dawn/items/de47cdd6d9b8e1315c9a
-  // $(function(){
-  // // window.addEventListener('DOMContentLoaded', function() {
-  //   let randomContent = [];
-  //   $('.quiz_answer_list li').each(function() {
-  //     randomContent.push($(this).html());
-  //   });
-  
-  //   randomContent.sort(function() {
-  //     return Math.random() - Math.random();
-  //   });
-  
-  //   $('.quiz_answer_list li').empty();
-  //   let i = 0;
-  //   $('.quiz_answer_list li').each(function() {
-  //     $(this).append(randomContent[i]);
-  //     i++;
-  //   });
-  // });
-
-  // const lists = document.querySelectorAll('.quiz_answer_list');
-  // lists.forEach(list => {
-  //   $(function(){
-  //     let randomContent = [];
-  //     $('.quiz_answer_list li').each(function() {
-  //       randomContent.push($(this).html());
-  //     });
-    
-  //     randomContent.sort(function() {
-  //       return Math.random() - Math.random();
-  //     });
-    
-  //     $('.quiz_answer_list li').empty();
-  //     let i = 0;
-  //     $('.quiz_answer_list li').each(function() {
-  //       $(this).append(randomContent[i]);
-  //       i++;
-  //     });
-  //   });
-  // });
-
   // クイズ要素 jsだけでクイズを追加可能にする
   const QUIZ_VALUE = [
     {
@@ -104,7 +35,7 @@
     },
     {
       number: 4,
-      question: 'イギリスのコンピューター科学者であるギャビン・ウッド氏が提唱した、ブロックチェーン技術を活用した「次世代分散型インターネット」のことをなんと言うでしょう？',
+      question: '日本が目指すサイバー空間とフィジカル空間を高度に融合させたシステムによって開かれる未来社会のことを何と言うでしょうか？',
       picture: '../assets/img/quiz/img-quiz04.png',
       item: ['Society 5.0', 'CyPhy', 'SDGs'],
       // item1: 'Society 5.0',
@@ -152,11 +83,11 @@
     
     const quiz_content = quiz.content.cloneNode(true);
 
-    // // const data_quiz = document.getElementById('quiz');
     const data_quiz = quiz_content.querySelector('.js-quiz');
     data_quiz.setAttribute("data-quiz", i);
 
-    quiz_content.querySelector('.quiz_question_title_box').textContent = "Q" + QUIZ_VALUE[i].number;
+    // quiz_content.querySelector('.quiz_question_title_box').textContent = "Q" + QUIZ_VALUE[i].number;
+    quiz_content.querySelector('.quiz_question_title_box').textContent = `Q${real_i+1}`;
     quiz_content.querySelector('.quiz_question_title_text').textContent = QUIZ_VALUE[i].question;
     quiz_content.querySelector('.quiz_question_pct').innerHTML = ("<img src='" + QUIZ_VALUE[i].picture + "' width=718>");
 
@@ -238,14 +169,6 @@
     // isCorrect -> L66  // 条件式 ? trueの処理 : falseの処理
   }
 
-  // self
-  // let points = 0;
-  // const addPoint = (isCorrect) => {
-  //   if (isCorrect === true) {
-  //     points = points + 1;
-  //   }
-  // }
-
   // 各問題の中での処理  // data-quizだからquiz??
   allQuiz.forEach(quiz => {
     const answers = quiz.querySelectorAll('.js-answer');  // どれが正解か
@@ -254,9 +177,6 @@
     const answerBox = quiz.querySelector('.js-answerBox');  // 答え全体
     const answerTitle = quiz.querySelector('.js-answerTitle');  // 正解か不正解か
     const answerText = quiz.querySelector('.js-answerText');  // 正解
-
-    // self
-    // const score = document.querySelector('.quiz_score_inner_text');
 
     answers.forEach(answer => {
       answer.addEventListener('click', () => {
@@ -276,15 +196,7 @@
         answerText.innerText = CORRECT_ANSWERS[selectedQuiz].value;
         setTitle(answerTitle, isCorrect);  // L42
         setClassName(answerBox, isCorrect);  // L46
-
-        // self
-        // addPoint(isCorrect);
       })
     })
   })
-
-  // if (selectedQuiz === 5) {
-  // const score = document.querySelector('.quiz_score_inner_text');
-  // score.innerText = points;
-  // }
 }
